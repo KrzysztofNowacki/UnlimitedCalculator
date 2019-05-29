@@ -351,8 +351,75 @@ void test()
     div_test();
 }
 
+void menu()
+{
+    std::string a{},b{};
+    bool good=0;
+    do
+    {
+        std::cout<<"Add a first number: ";
+        std::cin>>a;
+        if(a[0]=='-'||(a[0]>='0'&&a[0]<='9'))
+        {
+            for(unsigned long i=1;i<a.size();i++)
+            {
+                if(a[i]>='0'&&a[i]<='9') good=0;
+                else
+                {
+                    good=1;
+                    break;
+                }
+            }
+        }
+        else good=1;
+    }while(good);
+    do
+    {
+        std::cout<<"Add a secund number: ";
+        std::cin>>b;
+        if(b[0]=='-'||(b[0]>='0'&&b[0]<='9'))
+        {
+            for(unsigned long i=1;i<b.size();i++)
+            {
+                if(b[i]>='0'&&b[i]<='9') good=0;
+                else
+                {
+                    good=1;
+                    break;
+                }
+            }
+        }
+        else good=1;
+    }while(good);
+    int control;
+    do
+    {
+        bool good;
+        std::cout<<"What do you want to do?\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n\nSelect: ";
+        std::cin>>control;
+        if(control<1||control>4)good=1;
+        else good=0;
+    }while(good);
+    switch(control)
+    {
+        case 1:
+            std::cout<<addition(a,b)<<'\n';
+            break;
+        case 2:
+            std::cout<<subtraction(a,b)<<'\n';
+            break;
+        case 3:
+            std::cout<<multiply(a,b)<<'\n';
+            break;
+        case 4:
+            std::cout<<division(a,b)<<'\n';
+            break;
+    }
+}
+
 int main()
 {
     test();
+    menu();
     return 0;
 }
